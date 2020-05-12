@@ -1,0 +1,22 @@
+.users-list {
+    display: flex;  
+    flex-direction: column; 
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 10px 5px rgba(163, 163, 163, 0.6);
+    .users-list-item {
+        display: flex;  
+        flex-direction: row; 
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid rgba(163, 163, 163, 0.404);
+        img {
+            width: 50px;
+            height: 50px;            
+        }
+        .icons {
+            border-radius: 50%;
+        }
+    }
+}

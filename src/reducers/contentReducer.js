@@ -18,7 +18,7 @@ export function contentReducer(state = initialState, action) {
       return {
         ...state,
         isFetching: false,
-        usersList: action.payload.usersList,
+        usersList: action.payload,
       };
     case FETCH_USERS_ERROR:
       return {
