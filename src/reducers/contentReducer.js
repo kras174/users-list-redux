@@ -1,17 +1,32 @@
+import { FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS, FETCH_USERS_ERROR } from "../actions/contentActions";
+
 const initialState = {
-  users: [],
-  user: {
-    id: 0,
-    favourite: false,
-    name: "Gilbert Morton",
-    age: 30,
-    phone: "(369) 432-9206",
-    image: "sheep",
-    phrase: "Japman somam mes lizmasapa om zefopi ki wa ogju mofrajnir denba uc famoso opeipu woul.",
-    video: "shoe",
-  },
+  usersList: [],
+  isFetching: false,
+  error: "",
 };
 
 export function contentReducer(state = initialState, action) {
-  return state;
+  switch (action.type) {
+    case FETCH_USERS_REQUEST:
+      return {
+        ...state,
+        isFetching: true,
+        error: "",
+      };
+    case FETCH_USERS_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        usersList: action.payload.usersList,
+      };
+    case FETCH_USERS_ERROR:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.payload.error,
+      };
+    default:
+      return state;
+  }
 }
