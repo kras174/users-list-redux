@@ -1,11 +1,10 @@
 import React from "react";
-import "./App.scss";
 import HeaderContainer from "./containers/HeaderContainer";
 import ContentContainer from "./containers/ContentContainer";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App container">
       <HeaderContainer />
       <ContentContainer />
     </div>
