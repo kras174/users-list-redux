@@ -1,4 +1,4 @@
-import { FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS, FETCH_USERS_ERROR } from "../actions/contentActions";
+import { FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS, FETCH_USERS_ERROR, FAVOURITE_HANDLER } from "../actions/contentActions";
 
 const initialState = {
   usersList: [],
@@ -26,6 +26,8 @@ export function contentReducer(state = initialState, action) {
         isFetching: false,
         error: action.payload.error,
       };
+    case FAVOURITE_HANDLER:
+      return { ...state, usersList: action.payload };
     default:
       return state;
   }

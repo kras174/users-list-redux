@@ -10,7 +10,7 @@
     width: 100%;
     .checked {
        .box {
-        background-color: $main-dark;
+        background-color: $brandColor;
         span {
           color: white;
           transform: translateY(30px);
@@ -25,7 +25,7 @@
       width: 110px;
       height: 100px;
       background-color: $main-light;
-      border: 1px solid $main-dark;
+      border: 1px solid $brandColor;
       transition: all 250ms ease;
       will-change: transition;
       display: inline-block;
@@ -44,7 +44,7 @@
         transition: all 300ms ease;
         font-size: 1.2em;
         user-select: none;
-        color: $main-dark;
+        color: $brandColor;
         &:before {
           font-size: 1em;
           font-family: FontAwesome;

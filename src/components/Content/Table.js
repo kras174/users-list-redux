@@ -22,8 +22,7 @@ class Table extends Component {
           <p className="table-item-age">{user.age}</p>
           <p className="table-item-phone">{user.phone}</p>
           <span className="table-item-fav">
-            <i className="fas fa-star" />
-            <i className="far fa-star" />
+            <i className={user.favourite ? "fas fa-star" : "far fa-star"} onClick={this.props.starHandler.bind(this, user.id)} />
           </span>
         </div>
       );
@@ -51,6 +50,7 @@ Table.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
   fetchUsers: PropTypes.func.isRequired,
+  starHandler: PropTypes.func.isRequired,
 };
 
 export default Table;

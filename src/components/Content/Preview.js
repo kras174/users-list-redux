@@ -24,8 +24,7 @@ export default class Preview extends Component {
               <img className="preview-item-icon" src={iconPath} alt=""></img>
               <p className="preview-item-name">{user.name}</p>
               <span className="preview-item-fav">
-                <i className="fas fa-star" />
-                <i className="far fa-star" />
+                <i className={user.favourite ? "far fa-star" : "fas fa-star"} onClick={this.starClickHandler} />
               </span>
             </div>
 

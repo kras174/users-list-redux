@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 .users-table {
     box-shadow: 0 10px 5px rgba(163, 163, 163, 0.6);
     .users-table-item {
@@ -20,6 +22,10 @@
         }
         .table-item-fav {
             text-align: right;
+            margin-right: 10px;
+            i {
+                color: $brandColor
+            }
         }
 
     }

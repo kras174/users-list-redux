@@ -2,6 +2,8 @@ export const FETCH_USERS_REQUEST = "FETCH_USERS_REQUEST";
 export const FETCH_USERS_SUCCESS = "FETCH_USERS_SUCCESS";
 export const FETCH_USERS_ERROR = "FETCH_USERS_ERROR";
 
+export const FAVOURITE_HANDLER = "FAVOURITE_HANDLER";
+
 export function fetchUsers() {
   return (dispatch) => {
     dispatch({ type: FETCH_USERS_REQUEST });
@@ -12,13 +14,11 @@ export function fetchUsers() {
       for (let i = 0; i < 11; i++) {
         userList.push(data[i]);
       }
-      console.log(userList);
       dispatch({
         type: FETCH_USERS_SUCCESS,
         payload: userList,
       });
     } catch (error) {
-      console.log("error " + error);
       dispatch({
         type: FETCH_USERS_ERROR,
         payload: {
@@ -26,5 +26,20 @@ export function fetchUsers() {
         },
       });
     }
+  };
+}
+
+export function starHandler(id) {
+  return (dispatch, getState) => {
+    const newStore = getState().content.usersList.map((item, index) => {
+      if (index === id) {
+        item.favourite = !item.favourite;
+      }
+      return item;
+    });
+    dispatch({
+      type: FAVOURITE_HANDLER,
+      payload: newStore,
+    });
   };
 }
