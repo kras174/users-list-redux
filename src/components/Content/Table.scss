@@ -1,7 +1,7 @@
 .users-list {
     display: flex;  
     flex-direction: column; 
-    max-width: 600px;
+    max-width: 1200px;
     margin: 0 auto;
     box-shadow: 0 10px 5px rgba(163, 163, 163, 0.6);
     .users-list-item {
@@ -15,8 +15,12 @@
             width: 50px;
             height: 50px;            
         }
-        .icons {
-            border-radius: 50%;
+        .item-icon, .item-name, .item-phone,  .item-fav{
+            flex: 1;
         }
+        .item-age {
+            flex: 3
+        }
+
     }
 }

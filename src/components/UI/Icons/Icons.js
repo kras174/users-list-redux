@@ -614,18 +614,6 @@ export function Icons(props) {
           height={props.height}
           viewBox="0 0 300 300"
         >
-          {/* <defs>
-            <filter id="dropshadow" width="430%" height="430%">
-              <feGaussianBlur in="SourceAlpha" stdDeviation="4" />
-              <feOffset dx="0" dy="2" result="offsetblur" />
-            </filter>
-
-            <g id="icon" fill="#fff">
-              <circle cx="-170" cy="-150" r="45%" filter="url(#dropshadow)" />
-              <circle cx="-170" cy="-150" r="45%" />
-            </g>
-          </defs>
-          <use xlinkHref="#icon" x="320px" y="320px" /> */}
           <path
             d="M116.436 48.845s3.992-20.308-28.284-36.625C55.879-4.096 27.961.98 27.961.98s9.79 11.242 18.854 29.734c9.064 18.493 18.491 32.273 43.875 30.46 25.383-1.815 25.746-12.329 25.746-12.329z"
             fill="#e37b62"

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Loader from "../UI/Loader/Loader";
 import PropTypes from "prop-types";
-import { Icons } from "../UI/Icons/Icons";
+// import { Icons } from "../UI/Icons/Icons";
 import "./Table.scss";
 
 export default class Table extends Component {
@@ -15,9 +15,9 @@ export default class Table extends Component {
       return (
         <div key={user.id} className="users-list-item">
           {/*Картинка через img */}
-          {/* <img src={iconPath} alt=""></img> */}
+          <img className="item-icon" src={iconPath} alt=""></img>
           {/*Картинка через Icon компонент */}
-          <Icons name={user.image} width="50" height="50" />
+          {/* <Icons name={user.image} width="50" height="50" /> */}
           <p className="item-name">{user.name}</p>
           <p className="item-age">{user.age}</p>
           <p className="item-phone">{user.phone}</p>
