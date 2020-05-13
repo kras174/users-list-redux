@@ -1,6 +1,4 @@
-
-$main-light: #fff;
-$main-dark: #007e90;
+@import './variables.scss';
 
 .header {
   display: grid;
@@ -10,21 +8,15 @@ $main-dark: #007e90;
     margin: auto 0;
     text-align: right;
     width: 100%;
-    h1 {
-      color: $main-light;
-    }
-    input[type="radio"] {
-      display: none;
-      &:checked {
-        + .box {
-          background-color: $main-dark;
-          span {
-            color: white;
-            transform: translateY(30px);
-            &:before {
-              transform: translateY(0px);
-              opacity: 1;
-            }
+    .checked {
+       .box {
+        background-color: $main-dark;
+        span {
+          color: white;
+          transform: translateY(30px);
+          &:before {
+            transform: translateY(0px);
+            opacity: 1;
           }
         }
       }
@@ -65,17 +57,17 @@ $main-dark: #007e90;
         }
       }
     }
-    .front-end {
+    .nav-item-table {
       span {
         &:before {
-          content: '\f121';
+          content: '\f0c9';
         }
       }
     }
-    .back-end {
+    .nav-item-preview {
       span {
         &:before {
-          content: '\f0f4';
+          content: '\f0ce';
         }
       }
     }
