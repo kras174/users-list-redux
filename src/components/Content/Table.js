@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Loader from "../UI/Loader/Loader";
 import PropTypes from "prop-types";
 // import { Icons } from "../UI/Icons/Icons";
 import "./Table.scss";
 
-export default class Table extends Component {
+class Table extends Component {
   componentDidMount() {
     this.props.fetchUsers();
   }
@@ -31,16 +31,17 @@ export default class Table extends Component {
   };
 
   render() {
+    const { usersList, isFetching } = this.props;
     return (
-      <>
-        {this.props.isFetching ? (
+      <Fragment>
+        {isFetching ? (
           <Loader />
-        ) : this.props.usersList.length !== 0 ? (
+        ) : usersList.length !== 0 ? (
           <div className="users-table">{this.renderTable()}</div>
         ) : (
           <h2>Список пользователей пуст!</h2>
         )}
-      </>
+      </Fragment>
     );
   }
 }
@@ -51,3 +52,5 @@ Table.propTypes = {
   error: PropTypes.string.isRequired,
   fetchUsers: PropTypes.func.isRequired,
 };
+
+export default Table;
