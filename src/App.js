@@ -12,7 +12,7 @@ function App() {
       <Switch>
         <Route path="/table" component={TableContainer} />
         <Route path="/preview" component={PreviewContainer} />
-        <Redirect from={"/"} to={"/table"} />
+        {/* <Redirect from={"/"} to={"/table"} /> */}
       </Switch>
     </div>
   );

@@ -5,37 +5,51 @@ import PropTypes from "prop-types";
 import "./Table.scss";
 
 class Table extends Component {
-  sortList = (type, array) => {
+  sortList = (type, direction, array) => {
     switch (type) {
       case "Name":
         return array.sort((a, b) => {
           var nameA = a.name.toLowerCase(),
             nameB = b.name.toLowerCase();
-          if (nameA < nameB) return -1;
-          if (nameA > nameB) return 1;
+          if (direction === "Forward") {
+            if (nameA < nameB) return -1;
+            if (nameA > nameB) return 1;
+          } else if (direction === "Backward") {
+            if (nameA < nameB) return 1;
+            if (nameA > nameB) return -1;
+          }
           return 0;
         });
       case "Id":
-        return array.sort((a, b) => a.id - b.id);
+        return array.sort((a, b) => {
+          if (direction === "Forward") return a.id - b.id;
+          else if (direction === "Backward") return b.id - a.id;
+          return 0;
+        });
       case "Age":
-        return array.sort((a, b) => a.age - b.age);
+        return array.sort((a, b) => {
+          if (direction === "Forward") return a.age - b.age;
+          else if (direction === "Backward") return b.age - a.age;
+          return 0;
+        });
       default:
         break;
     }
   };
 
   renderTable = () => {
-    const { usersList, inputFilter } = this.props;
+    const { usersList, inputFilter, sortType, sortDirection } = this.props;
 
-    // this.sortList("Age", usersList);
+    if (sortType) this.sortList(sortType, sortDirection, usersList); // сортировка
 
     return usersList.map((user) => {
       if (inputFilter) {
+        // фильрация
         if (user.name.toLowerCase().indexOf(inputFilter.toLowerCase()) === -1) {
           return null;
         }
       }
-
+      // вывод таблицы
       const iconPath = require(`../../data/images/${user.image}.svg`);
       return (
         <div key={user.id} className="users-table-item">
@@ -77,6 +91,8 @@ Table.propTypes = {
   error: PropTypes.string.isRequired,
   starHandler: PropTypes.func.isRequired,
   inputFilter: PropTypes.string.isRequired,
+  sortType: PropTypes.string,
+  sortDirection: PropTypes.string,
 };
 
 export default Table;

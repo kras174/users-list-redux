@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchUsers, starHandler } from "../actions/contentActions";
+import { starHandler } from "../actions/contentActions";
 import Table from "../components/Content/Table";
 
 const mapStateToProps = (store) => ({
@@ -7,6 +7,8 @@ const mapStateToProps = (store) => ({
   isFetching: store.content.isFetching,
   error: store.content.error,
   inputFilter: store.filter.inputFilter,
+  sortType: store.content.sortType,
+  sortDirection: store.content.sortDirection,
 });
 
 const mapDispatchToProps = (dispatch) => ({

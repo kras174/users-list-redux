@@ -5,7 +5,7 @@ const initialState = {
   usersList: [],
   isFetching: false,
   sortType: "",
-  sortDirection: "",
+  sortDirection: "Forward",
   error: "",
 };
 

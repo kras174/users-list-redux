@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchUsers, starHandler } from "../actions/contentActions";
+import { starHandler } from "../actions/contentActions";
 import Preview from "../components/Content/Preview";
 
 const mapStateToProps = (store) => ({

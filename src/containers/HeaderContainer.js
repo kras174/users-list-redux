@@ -15,11 +15,11 @@ class HeaderContainer extends Component {
   }
 
   render() {
-    const { inputFilter, inputFilterAction, sortAction, directionAction } = this.props;
+    const { inputFilter, inputFilterAction, sortType, sortDirection, sortAction, directionAction } = this.props;
     return (
       <div className="header">
         <div className="header-left">
-          <SortButtons sortAction={sortAction} directionAction={directionAction} />
+          <SortButtons sortType={sortType} sortDirection={sortDirection} sortAction={sortAction} directionAction={directionAction} />
           <InputFilter inputFilter={inputFilter} inputFilterAction={inputFilterAction} />
         </div>
         <div className="header-right">
@@ -32,6 +32,8 @@ class HeaderContainer extends Component {
 
 const mapStateToProps = (store) => ({
   inputFilter: store.filter.inputFilter,
+  sortType: store.content.sortType,
+  sortDirection: store.content.sortDirection,
 });
 
 const mapDispatchToProps = (dispatch) => ({

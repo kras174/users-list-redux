@@ -7,6 +7,25 @@
   .header-left {
     margin: auto 0;
     text-align: left;
+    .sort {
+    }
+    .sort-reverse {
+
+    }
+    .sort-button {
+      cursor: pointer;
+    }  
+    .active {
+      color: $main-light;
+      background-color: $brandColor;
+    }
+    .direction {
+      cursor: pointer;
+      &:disabled {
+        cursor: default;
+        background-color: #333;
+        }
+    }
     .filter {
       .filter-input {
         margin-left: 10px;
@@ -14,9 +33,9 @@
     }
   }
   .header-right {
+    margin: auto 0;
+    text-align: right;
     .nav {
-      margin: auto 0;
-      text-align: right;
       .checked {
          .box {
           background-color: $brandColor;

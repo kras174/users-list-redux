@@ -32,7 +32,7 @@ export function fetchUsers() {
 export function starHandler(id) {
   return (dispatch, getState) => {
     const newStore = getState().content.usersList.map((item, index) => {
-      if (index === id) {
+      if (item.id === id) {
         item.favourite = !item.favourite;
       }
       return item;
