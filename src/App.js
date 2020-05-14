@@ -8,7 +8,6 @@ function App() {
   return (
     <div className="App container">
       <HeaderContainer />
-
       <Switch>
         <Route path="/table" component={TableContainer} />
         <Route path="/preview" component={PreviewContainer} />
