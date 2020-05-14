@@ -6,39 +6,39 @@ export default class SortButtons extends Component {
     e.preventDefault();
     this.props.sortAction(e);
     document.querySelectorAll(".sort-button").forEach((button) => {
-      button.classList.remove("active");
+      button.classList.remove("checked");
     });
-    document.querySelector(`#${e.target.id}`).classList.add("active");
+    document.querySelector(`#${e.target.id}`).classList.add("checked");
   };
 
   clickDirectionHandler = (e) => {
     e.preventDefault();
     this.props.directionAction(e);
     document.querySelectorAll(".direction").forEach((button) => {
-      button.classList.remove("active");
+      button.classList.remove("checked");
     });
-    document.querySelector(`#${e.target.id}`).classList.add("active");
+    document.querySelector(`#${e.target.id}`).classList.add("checked");
   };
 
   render() {
     return (
       <>
         <div className="sort">
-          <button id="sortId" className="sort-button" onClick={this.clickSortHandler}>
+          <button id="sortId" className="sort-button box" onClick={this.clickSortHandler}>
             ID
           </button>
-          <button id="sortName" className="sort-button" onClick={this.clickSortHandler}>
+          <button id="sortName" className="sort-button box" onClick={this.clickSortHandler}>
             Имя
           </button>
-          <button id="sortAge" className="sort-button" onClick={this.clickSortHandler}>
+          <button id="sortAge" className="sort-button box" onClick={this.clickSortHandler}>
             Возраст
           </button>
         </div>
         <div className="sort-reverse">
-          <button id="sortForward" className="direction active" disabled={!this.props.sortType} onClick={this.clickDirectionHandler}>
+          <button id="sortForward" className="direction box checked" disabled={!this.props.sortType} onClick={this.clickDirectionHandler}>
             По возрастанию
           </button>
-          <button id="sortBackward" className="direction" disabled={!this.props.sortType} onClick={this.clickDirectionHandler}>
+          <button id="sortBackward" className="direction box" disabled={!this.props.sortType} onClick={this.clickDirectionHandler}>
             По убывванию
           </button>
         </div>

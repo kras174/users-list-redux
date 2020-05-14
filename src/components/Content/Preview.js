@@ -5,14 +5,51 @@ import ReactPlayer from "react-player";
 import "./Preview.scss";
 
 class Preview extends Component {
+  sortList = (type, direction, array) => {
+    switch (type) {
+      case "Name":
+        return array.sort((a, b) => {
+          var nameA = a.name.toLowerCase(),
+            nameB = b.name.toLowerCase();
+          if (direction === "Forward") {
+            if (nameA < nameB) return -1;
+            if (nameA > nameB) return 1;
+          } else if (direction === "Backward") {
+            if (nameA < nameB) return 1;
+            if (nameA > nameB) return -1;
+          }
+          return 0;
+        });
+      case "Id":
+        return array.sort((a, b) => {
+          if (direction === "Forward") return a.id - b.id;
+          else if (direction === "Backward") return b.id - a.id;
+          return 0;
+        });
+      case "Age":
+        return array.sort((a, b) => {
+          if (direction === "Forward") return a.age - b.age;
+          else if (direction === "Backward") return b.age - a.age;
+          return 0;
+        });
+      default:
+        break;
+    }
+  };
+
   renderPreview = () => {
-    const { usersList, inputFilter } = this.props;
+    const { usersList, inputFilter, sortType, sortDirection } = this.props;
+    // сортировка
+    if (sortType) this.sortList(sortType, sortDirection, usersList);
+
     return usersList.map((user) => {
+      //фильтрация
       if (inputFilter) {
-        if (user.name.toLowerCase().indexOf(inputFilter) === -1) {
+        if (user.name.toLowerCase().indexOf(inputFilter.toLowerCase()) === -1) {
           return null;
         }
       }
+      // вывод контекта
       const iconPath = require(`../../data/images/${user.image}.svg`);
       let videoPath = "";
       if (user.video) videoPath = require(`../../data/videos/${user.video}.mp4`);
@@ -68,6 +105,8 @@ Preview.propTypes = {
   error: PropTypes.string.isRequired,
   starHandler: PropTypes.func.isRequired,
   inputFilter: PropTypes.string.isRequired,
+  sortType: PropTypes.string,
+  sortDirection: PropTypes.string,
 };
 
 export default Preview;

@@ -39,17 +39,17 @@ class Table extends Component {
 
   renderTable = () => {
     const { usersList, inputFilter, sortType, sortDirection } = this.props;
-
-    if (sortType) this.sortList(sortType, sortDirection, usersList); // сортировка
+    // сортировка
+    if (sortType) this.sortList(sortType, sortDirection, usersList);
 
     return usersList.map((user) => {
+      //фильтрация
       if (inputFilter) {
-        // фильрация
         if (user.name.toLowerCase().indexOf(inputFilter.toLowerCase()) === -1) {
           return null;
         }
       }
-      // вывод таблицы
+      // вывод контекта
       const iconPath = require(`../../data/images/${user.image}.svg`);
       return (
         <div key={user.id} className="users-table-item">

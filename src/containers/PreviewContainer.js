@@ -7,6 +7,8 @@ const mapStateToProps = (store) => ({
   isFetching: store.content.isFetching,
   error: store.content.error,
   inputFilter: store.filter.inputFilter,
+  sortType: store.content.sortType,
+  sortDirection: store.content.sortDirection,
 });
 
 const mapDispatchToProps = (dispatch) => ({

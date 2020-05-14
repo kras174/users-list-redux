@@ -7,28 +7,56 @@
   .header-left {
     margin: auto 0;
     text-align: left;
-    .sort {
+    .box {
+      width: 130px;
+      height: 30px;
+      margin-right: 3px;
+      background-color: $main-light;
+      border: 1px solid $brandColor;
+      transition: all 250ms ease;
+      will-change: transition;
+      display: inline-block;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      font-weight: 600;
+      &:active{
+        outline: none !important;
+        transform: translateY(5px);
+      }
     }
     .sort-reverse {
-
+      margin-top: 10px;
     }
     .sort-button {
       cursor: pointer;
     }  
-    .active {
-      color: $main-light;
+    .checked {
       background-color: $brandColor;
+      color: $main-light;
     }
     .direction {
       cursor: pointer;
       &:disabled {
         cursor: default;
-        background-color: #333;
+        color: $main-light;
+        background-color: #7c7c7c;
+        border-color: #7c7c7c;
         }
     }
     .filter {
+      margin-top: 10px;
       .filter-input {
-        margin-left: 10px;
+        width: 125px;
+        box-sizing: border-box;
+        border: 1px solid $brandColor;
+        font-size: 16px;
+        padding: 8px 10px 8px 10px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+        &:focus {
+          width: 50%;
+        }
       } 
     }
   }
@@ -40,7 +68,7 @@
          .box {
           background-color: $brandColor;
           span {
-            color: white;
+            color: $main-light;
             transform: translateY(30px);
             &:before {
               transform: translateY(0px);
@@ -62,7 +90,7 @@
         position: relative;
         font-weight: 600;
         &:active{
-          transform: translateY(10px);
+          transform: translateY(5px);
         }
         span {
           position: absolute;
@@ -81,7 +109,7 @@
             opacity: 0;
             transition: all 300ms ease-in-out;
             font-weight: normal;
-            color: white;
+            color: $main-light;
           }
         }
       }
