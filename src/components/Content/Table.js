@@ -5,11 +5,33 @@ import PropTypes from "prop-types";
 import "./Table.scss";
 
 class Table extends Component {
+  sortList = (type, array) => {
+    switch (type) {
+      case "Name":
+        return array.sort((a, b) => {
+          var nameA = a.name.toLowerCase(),
+            nameB = b.name.toLowerCase();
+          if (nameA < nameB) return -1;
+          if (nameA > nameB) return 1;
+          return 0;
+        });
+      case "Id":
+        return array.sort((a, b) => a.id - b.id);
+      case "Age":
+        return array.sort((a, b) => a.age - b.age);
+      default:
+        break;
+    }
+  };
+
   renderTable = () => {
-    const { usersList, inputFilter, isFiltering } = this.props;
+    const { usersList, inputFilter } = this.props;
+
+    // this.sortList("Age", usersList);
+
     return usersList.map((user) => {
-      if (isFiltering) {
-        if (user.name.toLowerCase().indexOf(inputFilter) === -1) {
+      if (inputFilter) {
+        if (user.name.toLowerCase().indexOf(inputFilter.toLowerCase()) === -1) {
           return null;
         }
       }
@@ -17,6 +39,7 @@ class Table extends Component {
       const iconPath = require(`../../data/images/${user.image}.svg`);
       return (
         <div key={user.id} className="users-table-item">
+          <p>{user.id}</p>
           {/*Картинка через img */}
           <img className="table-item-icon" src={iconPath} alt=""></img>
           {/*Картинка через Icon компонент */}
@@ -52,9 +75,7 @@ Table.propTypes = {
   usersList: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
-  fetchUsers: PropTypes.func.isRequired,
   starHandler: PropTypes.func.isRequired,
-  isFiltering: PropTypes.bool.isRequired,
   inputFilter: PropTypes.string.isRequired,
 };
 

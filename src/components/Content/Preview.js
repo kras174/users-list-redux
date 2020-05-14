@@ -6,9 +6,9 @@ import "./Preview.scss";
 
 class Preview extends Component {
   renderPreview = () => {
-    const { usersList, inputFilter, isFiltering } = this.props;
+    const { usersList, inputFilter } = this.props;
     return usersList.map((user) => {
-      if (isFiltering) {
+      if (inputFilter) {
         if (user.name.toLowerCase().indexOf(inputFilter) === -1) {
           return null;
         }
@@ -66,9 +66,7 @@ Preview.propTypes = {
   usersList: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
-  fetchUsers: PropTypes.func.isRequired,
   starHandler: PropTypes.func.isRequired,
-  isFiltering: PropTypes.bool.isRequired,
   inputFilter: PropTypes.string.isRequired,
 };
 

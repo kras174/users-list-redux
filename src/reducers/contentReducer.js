@@ -1,10 +1,11 @@
 import { FETCH_USERS_REQUEST, FETCH_USERS_SUCCESS, FETCH_USERS_ERROR, FAVOURITE_HANDLER } from "../actions/contentActions";
-import { INPUT_FILTER_CHANGE } from "../actions/filterActions";
+import { SORT_BUTTON_CLICK, DIRECTION_BUTTON_CLICK } from "../actions/sortActions";
 
 const initialState = {
   usersList: [],
   isFetching: false,
-  isFiltering: false,
+  sortType: "",
+  sortDirection: "",
   error: "",
 };
 
@@ -30,8 +31,10 @@ export function contentReducer(state = initialState, action) {
       };
     case FAVOURITE_HANDLER:
       return { ...state, usersList: action.payload };
-    case INPUT_FILTER_CHANGE:
-      return { ...state, isFiltering: !!action.payload };
+    case SORT_BUTTON_CLICK:
+      return { ...state, sortType: action.payload };
+    case DIRECTION_BUTTON_CLICK:
+      return { ...state, sortDirection: action.payload };
     default:
       return state;
   }

@@ -6,9 +6,6 @@ class InputFilter extends Component {
     const { inputFilter, inputFilterAction } = this.props;
     return (
       <>
-        <button className="filter-item">ID</button>
-        <button className="filter-item">Имя</button>
-        <button className="filter-item">Возраст</button>
         <input className="filter-input" type="text" id="filter" placeholder="Введите имя" value={inputFilter} onChange={inputFilterAction} />
       </>
     );

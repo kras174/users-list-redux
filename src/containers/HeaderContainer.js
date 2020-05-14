@@ -1,9 +1,13 @@
 import React, { Component } from "react";
-import Header from "../components/Header/Header";
+import NavMenu from "../components/Header/NavMenu";
 import { connect } from "react-redux";
+
 import { fetchUsers } from "../actions/contentActions";
 import { inputFilterAction } from "../actions/filterActions";
+import { sortAction, directionAction } from "../actions/sortActions";
+
 import InputFilter from "../components/Header/InputFilter";
+import SortButtons from "../components/Header/SortButtons";
 
 class HeaderContainer extends Component {
   componentDidMount() {
@@ -11,11 +15,16 @@ class HeaderContainer extends Component {
   }
 
   render() {
-    const { inputFilter, inputFilterAction } = this.props;
+    const { inputFilter, inputFilterAction, sortAction, directionAction } = this.props;
     return (
       <div className="header">
-        <InputFilter inputFilter={inputFilter} inputFilterAction={inputFilterAction} />
-        <Header />
+        <div className="header-left">
+          <SortButtons sortAction={sortAction} directionAction={directionAction} />
+          <InputFilter inputFilter={inputFilter} inputFilterAction={inputFilterAction} />
+        </div>
+        <div className="header-right">
+          <NavMenu />
+        </div>
       </div>
     );
   }
@@ -28,6 +37,8 @@ const mapStateToProps = (store) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchUsers: () => dispatch(fetchUsers()),
   inputFilterAction: (e) => dispatch(inputFilterAction(e)),
+  sortAction: (e) => dispatch(sortAction(e)),
+  directionAction: (e) => dispatch(directionAction(e)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);

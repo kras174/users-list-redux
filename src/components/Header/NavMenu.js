@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Header.scss";
 import { NavLink } from "react-router-dom";
 
-class Header extends Component {
+class NavMenu extends Component {
   renderNavigationButtons() {
     return (
       <>
@@ -28,4 +28,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default NavMenu;
