@@ -4,10 +4,16 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   min-height: 180px;
+  .filter {
+    margin: auto 0;
+    text-align: left;
+    .filter-input {
+      margin-left: 10px;
+    } 
+  }
   .nav {
     margin: auto 0;
     text-align: right;
-    width: 100%;
     .checked {
        .box {
         background-color: $brandColor;

@@ -22,7 +22,7 @@ export function fetchUsers() {
       dispatch({
         type: FETCH_USERS_ERROR,
         payload: {
-          error: error,
+          error: error.message,
         },
       });
     }

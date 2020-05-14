@@ -5,10 +5,6 @@ import ReactPlayer from "react-player";
 import "./Preview.scss";
 
 export default class Preview extends Component {
-  componentDidMount() {
-    this.props.fetchUsers();
-  }
-
   renderPreview = () => {
     const { usersList } = this.props;
     return usersList.map((user) => {
@@ -24,7 +20,7 @@ export default class Preview extends Component {
               <img className="preview-item-icon" src={iconPath} alt=""></img>
               <p className="preview-item-name">{user.name}</p>
               <span className="preview-item-fav">
-                <i className={user.favourite ? "far fa-star" : "fas fa-star"} onClick={this.starClickHandler} />
+                <i className={user.favourite ? "fas fa-star" : "far fa-star"} onClick={this.props.starHandler.bind(this, user.id)} />
               </span>
             </div>
 
@@ -66,4 +62,5 @@ Preview.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
   fetchUsers: PropTypes.func.isRequired,
+  starHandler: PropTypes.func.isRequired,
 };

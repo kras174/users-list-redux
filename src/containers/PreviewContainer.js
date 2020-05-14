@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchUsers } from "../actions/contentActions";
+import { fetchUsers, starHandler } from "../actions/contentActions";
 import Preview from "../components/Content/Preview";
 
 const mapStateToProps = (store) => ({
@@ -10,6 +10,7 @@ const mapStateToProps = (store) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchUsers: () => dispatch(fetchUsers()),
+  starHandler: (id) => dispatch(starHandler(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Preview);

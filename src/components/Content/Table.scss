@@ -23,8 +23,9 @@
         .table-item-fav {
             text-align: right;
             margin-right: 10px;
-            i {
-                color: $brandColor
+            cursor: pointer;
+            i {              
+                color: $brandColor;
             }
         }
 

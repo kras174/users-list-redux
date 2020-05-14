@@ -5,10 +5,6 @@ import PropTypes from "prop-types";
 import "./Table.scss";
 
 class Table extends Component {
-  componentDidMount() {
-    this.props.fetchUsers();
-  }
-
   renderTable = () => {
     return this.props.usersList.map((user) => {
       const iconPath = require(`../../data/images/${user.image}.svg`);
