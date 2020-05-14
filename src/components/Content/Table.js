@@ -6,7 +6,14 @@ import "./Table.scss";
 
 class Table extends Component {
   renderTable = () => {
-    return this.props.usersList.map((user) => {
+    const { usersList, inputFilter, isFiltering } = this.props;
+    return usersList.map((user) => {
+      if (isFiltering) {
+        if (user.name.toLowerCase().indexOf(inputFilter) === -1) {
+          return null;
+        }
+      }
+
       const iconPath = require(`../../data/images/${user.image}.svg`);
       return (
         <div key={user.id} className="users-table-item">
@@ -47,6 +54,8 @@ Table.propTypes = {
   error: PropTypes.string.isRequired,
   fetchUsers: PropTypes.func.isRequired,
   starHandler: PropTypes.func.isRequired,
+  isFiltering: PropTypes.bool.isRequired,
+  inputFilter: PropTypes.string.isRequired,
 };
 
 export default Table;

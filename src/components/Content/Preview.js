@@ -4,10 +4,15 @@ import PropTypes from "prop-types";
 import ReactPlayer from "react-player";
 import "./Preview.scss";
 
-export default class Preview extends Component {
+class Preview extends Component {
   renderPreview = () => {
-    const { usersList } = this.props;
+    const { usersList, inputFilter, isFiltering } = this.props;
     return usersList.map((user) => {
+      if (isFiltering) {
+        if (user.name.toLowerCase().indexOf(inputFilter) === -1) {
+          return null;
+        }
+      }
       const iconPath = require(`../../data/images/${user.image}.svg`);
       let videoPath = "";
       if (user.video) videoPath = require(`../../data/videos/${user.video}.mp4`);
@@ -63,4 +68,8 @@ Preview.propTypes = {
   error: PropTypes.string.isRequired,
   fetchUsers: PropTypes.func.isRequired,
   starHandler: PropTypes.func.isRequired,
+  isFiltering: PropTypes.bool.isRequired,
+  inputFilter: PropTypes.string.isRequired,
 };
+
+export default Preview;
