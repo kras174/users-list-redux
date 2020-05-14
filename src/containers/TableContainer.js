@@ -3,7 +3,8 @@ import { fetchUsers, starHandler } from "../actions/contentActions";
 import Table from "../components/Content/Table";
 
 const mapStateToProps = (store) => ({
-  usersList: store.content.usersList,
+  usersList: store.filter.filteredUsers,
+  // usersList: store.content.usersList,
   isFetching: store.content.isFetching,
   error: store.content.error,
   isFavourite: store.content.isFavourite,
