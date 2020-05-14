@@ -10,7 +10,7 @@
     .preview-item-fav {
         padding-right: 30px;
     }
-}
+} 
 
 .users-preview {
     display: grid;  
@@ -60,6 +60,17 @@
         }
         .previrew-item-video {
         }
-text-align: left;
+    }
+}
+
+@media only screen 
+and (max-width : 500px) {
+    .videoContent {
+        grid-column: 1 / 2;
+        grid-template-columns: 1fr;
+    }
+    .users-preview {
+        grid-column: 1 / 2;
+        grid-template-columns: 1fr;
     }
 }

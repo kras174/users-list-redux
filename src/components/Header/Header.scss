@@ -10,7 +10,6 @@
     .box {
       width: 130px;
       height: 30px;
-      margin-right: 3px;
       background-color: $main-light;
       border: 1px solid $brandColor;
       transition: all 250ms ease;
@@ -47,7 +46,7 @@
     .filter {
       margin-top: 10px;
       .filter-input {
-        width: 125px;
+        width: 130px;
         box-sizing: border-box;
         border: 1px solid $brandColor;
         font-size: 16px;
@@ -55,7 +54,7 @@
         -webkit-transition: width 0.4s ease-in-out;
         transition: width 0.4s ease-in-out;
         &:focus {
-          width: 50%;
+          width: 80%;
         }
       } 
     }

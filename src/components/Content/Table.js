@@ -53,7 +53,7 @@ class Table extends Component {
       const iconPath = require(`../../data/images/${user.image}.svg`);
       return (
         <div key={user.id} className="users-table-item">
-          <p>{user.id}</p>
+          <div className="table-item-id">{user.id}</div>
           {/*Картинка через img */}
           <img className="table-item-icon" src={iconPath} alt=""></img>
           {/*Картинка через Icon компонент */}
