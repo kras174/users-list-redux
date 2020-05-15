@@ -7,7 +7,7 @@ import { inputFilterAction } from "../actions/filterActions";
 import { sortAction, directionAction } from "../actions/sortActions";
 
 import { Input } from "../components/Header/InputFilter";
-import SortButtons from "../components/Header/SortButtons";
+import { SortButtons } from "../components/Header/SortButtons";
 
 class HeaderContainer extends Component {
   componentDidMount() {
@@ -15,17 +15,11 @@ class HeaderContainer extends Component {
   }
 
   render() {
-    const { inputFilter, inputFilterAction, sortType, sortDirection, sortAction, directionAction, changeLanguage, isEnglish } = this.props;
+    const { inputFilter, inputFilterAction, sortType, sortAction, directionAction, changeLanguage, isEnglish } = this.props;
     return (
       <div className="header">
         <div className="header-left">
-          <SortButtons
-            isEnglish={isEnglish}
-            sortType={sortType}
-            sortDirection={sortDirection}
-            sortAction={sortAction}
-            directionAction={directionAction}
-          />
+          <SortButtons isEnglish={isEnglish} sortType={sortType} sortAction={sortAction} directionAction={directionAction} />
           <Input isEnglish={isEnglish} inputFilter={inputFilter} inputFilterAction={inputFilterAction} />
         </div>
         <div className="header-right">

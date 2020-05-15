@@ -1,13 +1,12 @@
-import React, { Component, Fragment } from "react";
+import React from "react";
 import Loader from "../UI/Loader/Loader";
 import { num2str, sortList } from "../../helpers/helpers";
 import PropTypes from "prop-types";
 import ReactPlayer from "react-player";
 import "./Preview.scss";
 
-class Preview extends Component {
-  renderPreview = () => {
-    const { usersList, inputFilter, sortType, sortDirection, isEnglish } = this.props;
+export const Preview = ({ usersList, isFetching, inputFilter, sortType, sortDirection, isEnglish, starHandler }) => {
+  const renderPreview = () => {
     // сортировка
     if (sortType) sortList(sortType, sortDirection, usersList);
     // вывод контекта
@@ -30,7 +29,7 @@ class Preview extends Component {
               <img className="preview-item-icon" src={iconPath} alt=""></img>
               <p className="preview-item-name">{user.name}</p>
               <span className="preview-item-fav">
-                <i className={user.favourite ? "fas fa-star" : "far fa-star"} onClick={this.props.starHandler.bind(this, user.id)} />
+                <i className={user.favourite ? "fas fa-star" : "far fa-star"} onClick={starHandler.bind(this, user.id)} />
               </span>
             </div>
 
@@ -54,31 +53,25 @@ class Preview extends Component {
     });
   };
 
-  render() {
-    const { usersList, isFetching } = this.props;
-    return (
-      <Fragment>
-        {isFetching ? (
-          <Loader />
-        ) : usersList.length !== 0 ? (
-          <div className="users-preview">{this.renderPreview()}</div>
-        ) : (
-          <h2>Список пользователей пуст!</h2>
-        )}
-      </Fragment>
-    );
-  }
-}
+  return (
+    <>
+      {isFetching ? (
+        <Loader />
+      ) : usersList.length !== 0 ? (
+        <div className="users-preview">{renderPreview()}</div>
+      ) : (
+        <h2>Список пользователей пуст!</h2>
+      )}
+    </>
+  );
+};
 
 Preview.propTypes = {
   usersList: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  error: PropTypes.string.isRequired,
   starHandler: PropTypes.func.isRequired,
   inputFilter: PropTypes.string.isRequired,
   sortType: PropTypes.string,
   sortDirection: PropTypes.string,
   isEnglish: PropTypes.bool.isRequired,
 };
-
-export default Preview;

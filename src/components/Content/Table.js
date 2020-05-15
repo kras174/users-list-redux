@@ -1,13 +1,12 @@
-import React, { Component, Fragment } from "react";
+import React from "react";
 import Loader from "../UI/Loader/Loader";
 import { num2str, sortList } from "../../helpers/helpers";
 import PropTypes from "prop-types";
 // import { Icons } from "../UI/Icons/Icons";
 import "./Table.scss";
 
-class Table extends Component {
-  renderTable = () => {
-    const { usersList, inputFilter, sortType, sortDirection, isEnglish } = this.props;
+export const Table = ({ usersList, isFetching, inputFilter, sortType, sortDirection, isEnglish, starHandler }) => {
+  const renderTable = () => {
     // сортировка
     if (sortType) sortList(sortType, sortDirection, usersList);
     // вывод контекта
@@ -34,38 +33,24 @@ class Table extends Component {
           </p>
           <p className="table-item-phone">{user.phone}</p>
           <span className="table-item-fav">
-            <i className={user.favourite ? "fas fa-star" : "far fa-star"} onClick={this.props.starHandler.bind(this, user.id)} />
+            <i className={user.favourite ? "fas fa-star" : "far fa-star"} onClick={starHandler.bind(this, user.id)} />
           </span>
         </div>
       );
     });
   };
 
-  render() {
-    const { usersList, isFetching } = this.props;
-    return (
-      <Fragment>
-        {isFetching ? (
-          <Loader />
-        ) : usersList.length !== 0 ? (
-          <div className="users-table">{this.renderTable()}</div>
-        ) : (
-          <h2>Список пользователей пуст!</h2>
-        )}
-      </Fragment>
-    );
-  }
-}
+  return (
+    <>{isFetching ? <Loader /> : usersList.length !== 0 ? <div className="users-table">{renderTable()}</div> : <h2>Список пользователей пуст!</h2>}</>
+  );
+};
 
 Table.propTypes = {
   usersList: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  error: PropTypes.string.isRequired,
   starHandler: PropTypes.func.isRequired,
   inputFilter: PropTypes.string.isRequired,
   sortType: PropTypes.string,
   sortDirection: PropTypes.string,
   isEnglish: PropTypes.bool.isRequired,
 };
-
-export default Table;
