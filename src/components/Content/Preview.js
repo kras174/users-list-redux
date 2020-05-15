@@ -1,58 +1,26 @@
 import React, { Component, Fragment } from "react";
 import Loader from "../UI/Loader/Loader";
+import { num2str, sortList } from "../../helpers/helpers";
 import PropTypes from "prop-types";
 import ReactPlayer from "react-player";
 import "./Preview.scss";
 
 class Preview extends Component {
-  sortList = (type, direction, array) => {
-    switch (type) {
-      case "Name":
-        return array.sort((a, b) => {
-          var nameA = a.name.toLowerCase(),
-            nameB = b.name.toLowerCase();
-          if (direction === "Forward") {
-            if (nameA < nameB) return -1;
-            if (nameA > nameB) return 1;
-          } else if (direction === "Backward") {
-            if (nameA < nameB) return 1;
-            if (nameA > nameB) return -1;
-          }
-          return 0;
-        });
-      case "Id":
-        return array.sort((a, b) => {
-          if (direction === "Forward") return a.id - b.id;
-          else if (direction === "Backward") return b.id - a.id;
-          return 0;
-        });
-      case "Age":
-        return array.sort((a, b) => {
-          if (direction === "Forward") return a.age - b.age;
-          else if (direction === "Backward") return b.age - a.age;
-          return 0;
-        });
-      default:
-        break;
-    }
-  };
-
   renderPreview = () => {
-    const { usersList, inputFilter, sortType, sortDirection } = this.props;
+    const { usersList, inputFilter, sortType, sortDirection, isEnglish } = this.props;
     // сортировка
-    if (sortType) this.sortList(sortType, sortDirection, usersList);
-
+    if (sortType) sortList(sortType, sortDirection, usersList);
+    // вывод контекта
     return usersList.map((user) => {
+      const iconPath = require(`../../data/images/${user.image}.svg`);
+      let videoPath = "";
+      if (user.video) videoPath = require(`../../data/videos/${user.video}.mp4`);
       //фильтрация
       if (inputFilter) {
         if (user.name.toLowerCase().indexOf(inputFilter.toLowerCase()) === -1) {
           return null;
         }
       }
-      // вывод контекта
-      const iconPath = require(`../../data/images/${user.image}.svg`);
-      let videoPath = "";
-      if (user.video) videoPath = require(`../../data/videos/${user.video}.mp4`);
       return (
         <div key={user.id} className={user.video ? "users-preview-item videoContent" : "users-preview-item"}>
           {/*Картинка через Icon компонент */}
@@ -67,7 +35,10 @@ class Preview extends Component {
             </div>
 
             {/*Картинка через img */}
-            <p className="preview-item-age">{user.age}</p>
+            <p className="preview-item-age">
+              {user.age}
+              {isEnglish ? " years" : num2str(user.age, [" год", " года", " лет"])}
+            </p>
             <p className="preview-item-phone">
               <i className="fas fa-phone" /> {user.phone}
             </p>
@@ -107,6 +78,7 @@ Preview.propTypes = {
   inputFilter: PropTypes.string.isRequired,
   sortType: PropTypes.string,
   sortDirection: PropTypes.string,
+  isEnglish: PropTypes.bool.isRequired,
 };
 
 export default Preview;

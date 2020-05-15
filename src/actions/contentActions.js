@@ -4,6 +4,8 @@ export const FETCH_USERS_ERROR = "FETCH_USERS_ERROR";
 
 export const FAVOURITE_HANDLER = "FAVOURITE_HANDLER";
 
+export const CHANGE_LANGUAGE = "CHANGE_LANGUAGE";
+
 export function fetchUsers() {
   return (dispatch) => {
     dispatch({ type: FETCH_USERS_REQUEST });
@@ -11,7 +13,7 @@ export function fetchUsers() {
     try {
       const userList = [];
       const data = require("../data/data.json");
-      for (let i = 0; i < 15; i++) {
+      for (let i = 0; i < data.length; i++) {
         userList.push(data[i]);
       }
       dispatch({
@@ -42,4 +44,11 @@ export function starHandler(id) {
       payload: newStore,
     });
   };
+}
+
+export function changeLanguage() {
+  return (dispatch) =>
+    dispatch({
+      type: "CHANGE_LANGUAGE",
+    });
 }

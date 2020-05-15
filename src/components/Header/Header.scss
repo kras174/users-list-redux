@@ -129,3 +129,48 @@
     }
   }
 }
+.lang-item {
+  position: relative;
+}
+.lang-item .knobs:before
+{
+    content: 'RU';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 20px;
+    height: 10px;
+    color: $main-light;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+    padding: 9px 4px;
+    background-color: $brandColor;
+    border-radius: 2px;
+    transition: 0.3s ease all, left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
+}
+
+.lang-item .lang-btn:active > .knobs:before
+{
+    width: 46px;
+}
+
+.lang-item .lang-btn.checked:active > .knobs:before
+{
+    margin-left: -26px;
+}
+
+.lang-item .lang-btn.checked > .knobs:before
+{
+    content: 'EN';
+    left: 42px;
+    color: $brandColor;
+    border: 1px solid $brandColor;
+    background-color: $main-light;
+}
+
+.lang-item .lang-btn.checked ~ .layer
+{
+    background-color: #fcebeb;
+}

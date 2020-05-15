@@ -9,6 +9,7 @@ const mapStateToProps = (store) => ({
   inputFilter: store.filter.inputFilter,
   sortType: store.content.sortType,
   sortDirection: store.content.sortDirection,
+  isEnglish: store.content.isEnglish,
 });
 
 const mapDispatchToProps = (dispatch) => ({

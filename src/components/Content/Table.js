@@ -1,56 +1,25 @@
 import React, { Component, Fragment } from "react";
 import Loader from "../UI/Loader/Loader";
+import { num2str, sortList } from "../../helpers/helpers";
 import PropTypes from "prop-types";
 // import { Icons } from "../UI/Icons/Icons";
 import "./Table.scss";
 
 class Table extends Component {
-  sortList = (type, direction, array) => {
-    switch (type) {
-      case "Name":
-        return array.sort((a, b) => {
-          var nameA = a.name.toLowerCase(),
-            nameB = b.name.toLowerCase();
-          if (direction === "Forward") {
-            if (nameA < nameB) return -1;
-            if (nameA > nameB) return 1;
-          } else if (direction === "Backward") {
-            if (nameA < nameB) return 1;
-            if (nameA > nameB) return -1;
-          }
-          return 0;
-        });
-      case "Id":
-        return array.sort((a, b) => {
-          if (direction === "Forward") return a.id - b.id;
-          else if (direction === "Backward") return b.id - a.id;
-          return 0;
-        });
-      case "Age":
-        return array.sort((a, b) => {
-          if (direction === "Forward") return a.age - b.age;
-          else if (direction === "Backward") return b.age - a.age;
-          return 0;
-        });
-      default:
-        break;
-    }
-  };
-
   renderTable = () => {
-    const { usersList, inputFilter, sortType, sortDirection } = this.props;
+    const { usersList, inputFilter, sortType, sortDirection, isEnglish } = this.props;
     // сортировка
-    if (sortType) this.sortList(sortType, sortDirection, usersList);
-
+    if (sortType) sortList(sortType, sortDirection, usersList);
+    // вывод контекта
     return usersList.map((user) => {
+      const iconPath = require(`../../data/images/${user.image}.svg`);
       //фильтрация
       if (inputFilter) {
         if (user.name.toLowerCase().indexOf(inputFilter.toLowerCase()) === -1) {
           return null;
         }
       }
-      // вывод контекта
-      const iconPath = require(`../../data/images/${user.image}.svg`);
+
       return (
         <div key={user.id} className="users-table-item">
           <div className="table-item-id">{user.id}</div>
@@ -59,7 +28,10 @@ class Table extends Component {
           {/*Картинка через Icon компонент */}
           {/* <Icons name={user.image} width="50" height="50" /> */}
           <p className="table-item-name">{user.name}</p>
-          <p className="table-item-age">{user.age}</p>
+          <p className="table-item-age">
+            {user.age}
+            {isEnglish ? " years" : num2str(user.age, [" год", " года", " лет"])}
+          </p>
           <p className="table-item-phone">{user.phone}</p>
           <span className="table-item-fav">
             <i className={user.favourite ? "fas fa-star" : "far fa-star"} onClick={this.props.starHandler.bind(this, user.id)} />
@@ -93,6 +65,7 @@ Table.propTypes = {
   inputFilter: PropTypes.string.isRequired,
   sortType: PropTypes.string,
   sortDirection: PropTypes.string,
+  isEnglish: PropTypes.bool.isRequired,
 };
 
 export default Table;

@@ -25,21 +25,21 @@ export default class SortButtons extends Component {
       <>
         <div className="sort">
           <button id="sortId" className="sort-button box" onClick={this.clickSortHandler}>
-            ID
+            {this.props.isEnglish ? "Id" : "Идентификатор"}
           </button>
           <button id="sortName" className="sort-button box" onClick={this.clickSortHandler}>
-            Имя
+            {this.props.isEnglish ? "Name" : "Имя"}
           </button>
           <button id="sortAge" className="sort-button box" onClick={this.clickSortHandler}>
-            Возраст
+            {this.props.isEnglish ? "Age" : "Возраст"}
           </button>
         </div>
         <div className="sort-reverse">
           <button id="sortForward" className="direction box checked" disabled={!this.props.sortType} onClick={this.clickDirectionHandler}>
-            По возрастанию
+            {this.props.isEnglish ? "Sort ascending" : "По возрастанию"}
           </button>
           <button id="sortBackward" className="direction box" disabled={!this.props.sortType} onClick={this.clickDirectionHandler}>
-            По убывванию
+            {this.props.isEnglish ? "Sort descending" : "По убыванию"}
           </button>
         </div>
       </>
@@ -52,4 +52,5 @@ SortButtons.propTypes = {
   sortDirection: PropTypes.string.isRequired,
   sortAction: PropTypes.func.isRequired,
   directionAction: PropTypes.func.isRequired,
+  isEnglish: PropTypes.bool.isRequired,
 };

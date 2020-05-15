@@ -6,7 +6,14 @@ class InputFilter extends Component {
     const { inputFilter, inputFilterAction } = this.props;
     return (
       <>
-        <input className="filter-input" type="text" id="filter" placeholder="Поиск..." value={inputFilter} onChange={inputFilterAction} />
+        <input
+          className="filter-input"
+          type="text"
+          id="filter"
+          placeholder={this.props.isEnglish ? "Search..." : "Поиск..."}
+          value={inputFilter}
+          onChange={inputFilterAction}
+        />
       </>
     );
   }
@@ -19,6 +26,7 @@ class InputFilter extends Component {
 InputFilter.propTypes = {
   inputFilter: PropTypes.string.isRequired,
   inputFilterAction: PropTypes.func.isRequired,
+  isEnglish: PropTypes.bool.isRequired,
 };
 
 export default InputFilter;
