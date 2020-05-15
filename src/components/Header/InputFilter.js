@@ -1,32 +1,46 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-class InputFilter extends Component {
-  renderFilterButtons() {
-    const { inputFilter, inputFilterAction } = this.props;
-    return (
-      <>
-        <input
-          className="filter-input"
-          type="text"
-          id="filter"
-          placeholder={this.props.isEnglish ? "Search..." : "Поиск..."}
-          value={inputFilter}
-          onChange={inputFilterAction}
-        />
-      </>
-    );
-  }
+export const Input = ({ inputFilter, inputFilterAction, isEnglish }) => {
+  return (
+    <div className="filter">
+      <input
+        className="filter-input"
+        type="text"
+        id="filter"
+        placeholder={isEnglish ? "Search..." : "Поиск..."}
+        value={inputFilter}
+        onChange={inputFilterAction}
+      />
+    </div>
+  );
+};
 
-  render() {
-    return <div className="filter">{this.renderFilterButtons()}</div>;
-  }
-}
+// class InputFilter extends Component {
+//   renderFilterButtons() {
+//     return (
+//       <>
+//         <input
+//           className="filter-input"
+//           type="text"
+//           id="filter"
+//           placeholder={isEnglish ? "Search..." : "Поиск..."}
+//           value={inputFilter}
+//           onChange={inputFilterAction}
+//         />
+//       </>
+//     );
+//   }
 
-InputFilter.propTypes = {
+//   render() {
+//     return <div className="filter">{renderFilterButtons()}</div>;
+//   }
+// }
+
+Input.propTypes = {
   inputFilter: PropTypes.string.isRequired,
   inputFilterAction: PropTypes.func.isRequired,
   isEnglish: PropTypes.bool.isRequired,
 };
 
-export default InputFilter;
+// export default InputFilter;

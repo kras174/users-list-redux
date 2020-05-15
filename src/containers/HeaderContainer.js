@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import NavMenu from "../components/Header/NavMenu";
+import { NavMenu } from "../components/Header/NavMenu";
 import { connect } from "react-redux";
 
 import { fetchUsers, changeLanguage } from "../actions/contentActions";
 import { inputFilterAction } from "../actions/filterActions";
 import { sortAction, directionAction } from "../actions/sortActions";
 
-import InputFilter from "../components/Header/InputFilter";
+import { Input } from "../components/Header/InputFilter";
 import SortButtons from "../components/Header/SortButtons";
 
 class HeaderContainer extends Component {
@@ -26,7 +26,7 @@ class HeaderContainer extends Component {
             sortAction={sortAction}
             directionAction={directionAction}
           />
-          <InputFilter isEnglish={isEnglish} inputFilter={inputFilter} inputFilterAction={inputFilterAction} />
+          <Input isEnglish={isEnglish} inputFilter={inputFilter} inputFilterAction={inputFilterAction} />
         </div>
         <div className="header-right">
           <NavMenu isEnglish={isEnglish} changeLanguage={changeLanguage} />
