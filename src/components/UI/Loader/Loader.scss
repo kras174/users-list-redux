@@ -18,7 +18,7 @@
     left: 25px;
     border-radius: 50%;
     border: 8px solid #000;
-    border-color: $brandColor transparent $brandColor transparent;
+    border-color: $brandColorDark transparent $brandColorDark transparent;
     animation: innerLoader 1s linear infinite;
 }
 .innerLoader > div:nth-child(2) {
@@ -39,14 +39,14 @@
     height: 8px;
     top: -8px;
     left: 13px;
-    background: $brandColor;
+    background: $brandColorDark;
     border-radius: 50%;
-    box-shadow: 0 42px 0 0 $brandColor;
+    box-shadow: 0 42px 0 0 $brandColorDark;
 }
 .innerLoader > div:nth-child(2) div:after {
     left: -8px;
     top: 13px;
-    box-shadow: 42px 0 0 0 $brandColor;
+    box-shadow: 42px 0 0 0 $brandColorDark;
 }
 .Loader {
     width: 99px;

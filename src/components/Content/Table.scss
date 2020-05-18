@@ -13,8 +13,8 @@
             width: 30px;
             height: 30px;
             font-size: 13px;
-            color: $brandColor;
-            border: 2px solid $brandColor;
+            color: $brandColorDark;
+            border: 2px solid $brandColorDark;
             border-radius: 50%;
             text-align: center;
             line-height: 30px;
@@ -36,7 +36,7 @@
             margin-right: 10px;
             cursor: pointer;
             i {              
-                color: $brandColor;
+                color: $brandColorDark;
             }
         }
 

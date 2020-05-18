@@ -10,9 +10,9 @@
     .box {
       width: 130px;
       height: 30px;
-      color: $brandColor;
-      background-color: $main-light;
-      border: 1px solid $brandColor;
+      color: $brandColorDark;
+      background-color: $brandColorLigth;
+      border: 1px solid $brandColorDark;
       transition: all 250ms ease;
       will-change: transition;
       display: inline-block;
@@ -32,14 +32,14 @@
       cursor: pointer;
     }  
     .checked {
-      background-color: $brandColor;
-      color: $main-light;
+      background-color: $brandColorDark;
+      color: $brandColorLigth;
     }
     .direction {
       cursor: pointer;
       &:disabled {
         cursor: default;
-        color: $main-light;
+        color: $brandColorLigth;
         background-color: #7c7c7c;
         border-color: #7c7c7c;
         }
@@ -49,7 +49,7 @@
       .filter-input {
         width: 130px;
         box-sizing: border-box;
-        border: 1px solid $brandColor;
+        border: 1px solid $brandColorDark;
         font-size: 16px;
         padding: 8px 10px 8px 10px;
         -webkit-transition: width 0.4s ease-in-out;
@@ -66,9 +66,9 @@
     .nav {
       .checked {
          .box {
-          background-color: $brandColor;
+          background-color: $brandColorDark;
           span {
-            color: $main-light;
+            color: $brandColorLigth;
             transform: translateY(30px);
             &:before {
               transform: translateY(0px);
@@ -80,8 +80,8 @@
       .box {
         width: 110px;
         height: 100px;
-        background-color: $main-light;
-        border: 1px solid $brandColor;
+        background-color: $brandColorLigth;
+        border: 1px solid $brandColorDark;
         transition: all 250ms ease;
         will-change: transition;
         display: inline-block;
@@ -100,7 +100,7 @@
           transition: all 300ms ease;
           font-size: 1.2em;
           user-select: none;
-          color: $brandColor;
+          color: $brandColorDark;
           &:before {
             font-size: 1em;
             font-family: FontAwesome;
@@ -109,7 +109,7 @@
             opacity: 0;
             transition: all 300ms ease-in-out;
             font-weight: normal;
-            color: $main-light;
+            color: $brandColorLigth;
           }
         }
       }
@@ -148,14 +148,14 @@
     left: -5px;
     width: 20px;
     height: 10px;
-    color: $main-light;
+    color: $brandColorLigth;
     font-size: 10px;
     font-weight: bold;
     text-align: center;
     line-height: 1;
     padding: 9px 4px;
-    background-color: $brandColor;
-    border: 1px solid $brandColor;
+    background-color: $brandColorDark;
+    border: 1px solid $brandColorDark;
     border-radius: 2px;
     transition: 0.3s ease all, left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
 }
@@ -174,9 +174,9 @@
 {
     content: 'EN';
     left: 38px;
-    color: $brandColor;
-    border: 1px solid $brandColor;
-    background-color: $main-light;
+    color: $brandColorDark;
+    border: 1px solid $brandColorDark;
+    background-color: $brandColorLigth;
 }
 
 .lang-item .lang-btn.checked ~ .layer

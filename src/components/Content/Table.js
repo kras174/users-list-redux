@@ -10,7 +10,7 @@ export const Table = ({ usersList, isFetching, inputFilter, sortType, sortDirect
     // сортировка
     if (sortType) sortList(sortType, sortDirection, usersList);
     // вывод контекта
-    return usersList.map((user) => {
+    return usersList.map((user, id) => {
       const iconPath = require(`../../data/images/${user.image}.svg`);
       //фильтрация
       if (inputFilter) {
@@ -20,7 +20,7 @@ export const Table = ({ usersList, isFetching, inputFilter, sortType, sortDirect
       }
 
       return (
-        <div key={user.id} className="users-table-item">
+        <div key={id} className="users-table-item">
           <div className="table-item-id">{user.id}</div>
           {/*Картинка через img */}
           <img className="table-item-icon" src={iconPath} alt=""></img>
