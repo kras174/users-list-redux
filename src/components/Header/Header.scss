@@ -4,6 +4,10 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   min-height: 180px;
+  button:focus,
+  button:active {
+    outline: none;
+  }
   .header-left {
     margin: auto 0;
     text-align: left;
@@ -21,28 +25,31 @@
       position: relative;
       font-weight: 600;
       &:active {
-        outline: none !important;
         transform: translateY(5px);
       }
+    }
+    .sort-button:nth-child(2) {
+      border-left: none;
+      border-right: none;
     }
     .sort-reverse {
       margin-top: 10px;
     }
-    .sort-button {
+    .direction-button {
       cursor: pointer;
+      &:disabled {
+        cursor: default;
+        color: #7c7c7c;
+        background-color: $brandColorLigth;
+        border-color: #7c7c7c;
+      }
+      &:nth-child(2) {
+        border-left: none;
+      }
     }
     .checked {
       background-color: $brandColorDark;
       color: $brandColorLigth;
-    }
-    .direction {
-      cursor: pointer;
-      &:disabled {
-        cursor: default;
-        color: $brandColorLigth;
-        background-color: #7c7c7c;
-        border-color: #7c7c7c;
-      }
     }
     .filter {
       margin-top: 10px;
@@ -62,7 +69,7 @@
         margin-left: -20px;
         opacity: 0;
         visibility: hidden;
-        transition: all 0.5s ease-in-out;
+        transition: all 0.2s ease-in;
       }
       .filter-clear-active {
         opacity: 1;
@@ -148,13 +155,15 @@
     height: 30px;
     margin-top: 5px;
     margin-bottom: 10px;
+    background-color: $brandColorLigth;
+    border: 1px solid $brandColorDark;
   }
 }
 .lang-item .knobs:before {
   content: "RU";
   position: absolute;
-  top: -2px;
-  left: -5px;
+  top: -1px;
+  left: -1px;
   width: 20px;
   height: 10px;
   color: $brandColorLigth;
@@ -179,7 +188,7 @@
 
 .lang-item .lang-btn.checked > .knobs:before {
   content: "EN";
-  left: 38px;
+  left: 39px;
   color: $brandColorDark;
   border: 1px solid $brandColorDark;
   background-color: $brandColorLigth;

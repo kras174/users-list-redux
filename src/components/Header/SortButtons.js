@@ -1,7 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const SortButtons = ({ isEnglish, sortType, sortAction, directionAction }) => {
+export const SortButtons = ({
+  isEnglish,
+  sortType,
+  sortAction,
+  directionAction,
+}) => {
   const clickSortHandler = (e) => {
     e.preventDefault();
     sortAction(e);
@@ -14,7 +19,7 @@ export const SortButtons = ({ isEnglish, sortType, sortAction, directionAction }
   const clickDirectionHandler = (e) => {
     e.preventDefault();
     directionAction(e);
-    document.querySelectorAll(".direction").forEach((button) => {
+    document.querySelectorAll(".direction-button").forEach((button) => {
       button.classList.remove("checked");
     });
     document.querySelector(`#${e.target.id}`).classList.add("checked");
@@ -22,21 +27,43 @@ export const SortButtons = ({ isEnglish, sortType, sortAction, directionAction }
   return (
     <>
       <div className="sort">
-        <button id="sortId" className="sort-button box" onClick={clickSortHandler}>
+        <button
+          id="sortId"
+          className="sort-button box"
+          onClick={clickSortHandler}
+        >
           {isEnglish ? "Id" : "Идентификатор"}
         </button>
-        <button id="sortName" className="sort-button box" onClick={clickSortHandler}>
+        <button
+          id="sortName"
+          className="sort-button box"
+          onClick={clickSortHandler}
+        >
           {isEnglish ? "Name" : "Имя"}
         </button>
-        <button id="sortAge" className="sort-button box" onClick={clickSortHandler}>
+        <button
+          id="sortAge"
+          className="sort-button box"
+          onClick={clickSortHandler}
+        >
           {isEnglish ? "Age" : "Возраст"}
         </button>
       </div>
       <div className="sort-reverse">
-        <button id="sortForward" className="direction box checked" disabled={!sortType} onClick={clickDirectionHandler}>
+        <button
+          id="sortForward"
+          className="direction-button box checked"
+          disabled={!sortType}
+          onClick={clickDirectionHandler}
+        >
           {isEnglish ? "Sort ascending" : "По возрастанию"}
         </button>
-        <button id="sortBackward" className="direction box" disabled={!sortType} onClick={clickDirectionHandler}>
+        <button
+          id="sortBackward"
+          className="direction-button box"
+          disabled={!sortType}
+          onClick={clickDirectionHandler}
+        >
           {isEnglish ? "Sort descending" : "По убыванию"}
         </button>
       </div>
