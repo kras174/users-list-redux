@@ -1,4 +1,4 @@
-@import './variables.scss';
+@import "../../variables.scss";
 
 .header {
   display: grid;
@@ -20,7 +20,7 @@
       cursor: pointer;
       position: relative;
       font-weight: 600;
-      &:active{
+      &:active {
         outline: none !important;
         transform: translateY(5px);
       }
@@ -30,7 +30,7 @@
     }
     .sort-button {
       cursor: pointer;
-    }  
+    }
     .checked {
       background-color: $brandColorDark;
       color: $brandColorLigth;
@@ -42,7 +42,7 @@
         color: $brandColorLigth;
         background-color: #7c7c7c;
         border-color: #7c7c7c;
-        }
+      }
     }
     .filter {
       margin-top: 10px;
@@ -52,12 +52,22 @@
         border: 1px solid $brandColorDark;
         font-size: 16px;
         padding: 8px 10px 8px 10px;
-        -webkit-transition: width 0.4s ease-in-out;
-        transition: width 0.4s ease-in-out;
         &:focus {
-          width: 80%;
+          outline: none;
         }
-      } 
+      }
+      .filter-clear {
+        cursor: pointer;
+        color: $brandColorDark;
+        margin-left: -20px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s ease-in-out;
+      }
+      .filter-clear-active {
+        opacity: 1;
+        visibility: visible;
+      }
     }
   }
   .header-right {
@@ -65,7 +75,7 @@
     text-align: right;
     .nav {
       .checked {
-         .box {
+        .box {
           background-color: $brandColorDark;
           span {
             color: $brandColorLigth;
@@ -89,7 +99,7 @@
         cursor: pointer;
         position: relative;
         font-weight: 600;
-        &:active{
+        &:active {
           transform: translateY(5px);
         }
         span {
@@ -116,14 +126,14 @@
       .nav-item-table {
         span {
           &:before {
-            content: '\f0c9';
+            content: "\f0c9";
           }
         }
       }
       .nav-item-preview {
         span {
           &:before {
-            content: '\f0ce';
+            content: "\f0ce";
           }
         }
       }
@@ -131,8 +141,8 @@
   }
 }
 .lang-item {
-  
   .lang-btn {
+    cursor: pointer;
     position: relative;
     width: 70px;
     height: 30px;
@@ -140,46 +150,41 @@
     margin-bottom: 10px;
   }
 }
-.lang-item .knobs:before
-{
-    content: 'RU';
-    position: absolute;
-    top: -2px;
-    left: -5px;
-    width: 20px;
-    height: 10px;
-    color: $brandColorLigth;
-    font-size: 10px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 1;
-    padding: 9px 4px;
-    background-color: $brandColorDark;
-    border: 1px solid $brandColorDark;
-    border-radius: 2px;
-    transition: 0.3s ease all, left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
+.lang-item .knobs:before {
+  content: "RU";
+  position: absolute;
+  top: -2px;
+  left: -5px;
+  width: 20px;
+  height: 10px;
+  color: $brandColorLigth;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  padding: 9px 4px;
+  background-color: $brandColorDark;
+  border: 1px solid $brandColorDark;
+  border-radius: 2px;
+  transition: 0.3s ease all, left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
 }
 
-.lang-item .lang-btn:active > .knobs:before
-{
-    width: 46px;
+.lang-item .lang-btn:active > .knobs:before {
+  width: 46px;
 }
 
-.lang-item .lang-btn.checked:active > .knobs:before
-{
-    margin-left: -26px;
+.lang-item .lang-btn.checked:active > .knobs:before {
+  margin-left: -26px;
 }
 
-.lang-item .lang-btn.checked > .knobs:before
-{
-    content: 'EN';
-    left: 38px;
-    color: $brandColorDark;
-    border: 1px solid $brandColorDark;
-    background-color: $brandColorLigth;
+.lang-item .lang-btn.checked > .knobs:before {
+  content: "EN";
+  left: 38px;
+  color: $brandColorDark;
+  border: 1px solid $brandColorDark;
+  background-color: $brandColorLigth;
 }
 
-.lang-item .lang-btn.checked ~ .layer
-{
-    background-color: #fcebeb;
+.lang-item .lang-btn.checked ~ .layer {
+  background-color: #fcebeb;
 }

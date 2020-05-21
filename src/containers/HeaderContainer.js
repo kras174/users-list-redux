@@ -3,7 +3,7 @@ import { NavMenu } from "../components/Header/NavMenu";
 import { connect } from "react-redux";
 
 import { fetchUsers, changeLanguage } from "../actions/contentActions";
-import { inputFilterAction } from "../actions/filterActions";
+import { inputFilterAction, inputFilterClear } from "../actions/filterActions";
 import { sortAction, directionAction } from "../actions/sortActions";
 
 import { Input } from "../components/Header/InputFilter";
@@ -15,12 +15,31 @@ class HeaderContainer extends Component {
   }
 
   render() {
-    const { inputFilter, inputFilterAction, sortType, sortAction, directionAction, changeLanguage, isEnglish } = this.props;
+    const {
+      inputFilter,
+      inputFilterAction,
+      inputFilterClear,
+      sortType,
+      sortAction,
+      directionAction,
+      changeLanguage,
+      isEnglish,
+    } = this.props;
     return (
       <div className="header">
         <div className="header-left">
-          <SortButtons isEnglish={isEnglish} sortType={sortType} sortAction={sortAction} directionAction={directionAction} />
-          <Input isEnglish={isEnglish} inputFilter={inputFilter} inputFilterAction={inputFilterAction} />
+          <SortButtons
+            isEnglish={isEnglish}
+            sortType={sortType}
+            sortAction={sortAction}
+            directionAction={directionAction}
+          />
+          <Input
+            isEnglish={isEnglish}
+            inputFilter={inputFilter}
+            inputFilterAction={inputFilterAction}
+            inputFilterClear={inputFilterClear}
+          />
         </div>
         <div className="header-right">
           <NavMenu isEnglish={isEnglish} changeLanguage={changeLanguage} />
@@ -40,6 +59,7 @@ const mapStateToProps = (store) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchUsers: () => dispatch(fetchUsers()),
   inputFilterAction: (e) => dispatch(inputFilterAction(e)),
+  inputFilterClear: () => dispatch(inputFilterClear()),
   sortAction: (e) => dispatch(sortAction(e)),
   directionAction: (e) => dispatch(directionAction(e)),
   changeLanguage: () => dispatch(changeLanguage()),

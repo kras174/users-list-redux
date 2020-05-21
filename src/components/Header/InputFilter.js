@@ -1,7 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export const Input = ({ inputFilter, inputFilterAction, isEnglish }) => {
+export const Input = ({
+  inputFilter,
+  inputFilterAction,
+  inputFilterClear,
+  isEnglish,
+}) => {
   return (
     <div className="filter">
       <input
@@ -12,6 +17,14 @@ export const Input = ({ inputFilter, inputFilterAction, isEnglish }) => {
         value={inputFilter}
         onChange={inputFilterAction}
       />
+      <i
+        className={
+          inputFilter
+            ? "filter-clear filter-clear-active fas fa-times"
+            : "filter-clear fas fa-times"
+        }
+        onClick={inputFilterClear}
+      ></i>
     </div>
   );
 };
@@ -19,5 +32,6 @@ export const Input = ({ inputFilter, inputFilterAction, isEnglish }) => {
 Input.propTypes = {
   inputFilter: PropTypes.string.isRequired,
   inputFilterAction: PropTypes.func.isRequired,
+  inputFilterClear: PropTypes.func.isRequired,
   isEnglish: PropTypes.bool.isRequired,
 };

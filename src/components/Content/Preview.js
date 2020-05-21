@@ -5,7 +5,15 @@ import PropTypes from "prop-types";
 import ReactPlayer from "react-player";
 import "./Preview.scss";
 
-export const Preview = ({ usersList, isFetching, inputFilter, sortType, sortDirection, isEnglish, starHandler }) => {
+export const Preview = ({
+  usersList,
+  isFetching,
+  inputFilter,
+  sortType,
+  sortDirection,
+  isEnglish,
+  starHandler,
+}) => {
   const renderPreview = () => {
     // сортировка
     if (sortType) sortList(sortType, sortDirection, usersList);
@@ -13,7 +21,8 @@ export const Preview = ({ usersList, isFetching, inputFilter, sortType, sortDire
     return usersList.map((user) => {
       const iconPath = require(`../../data/images/${user.image}.svg`);
       let videoPath = "";
-      if (user.video) videoPath = require(`../../data/videos/${user.video}.mp4`);
+      if (user.video)
+        videoPath = require(`../../data/videos/${user.video}.mp4`);
       //фильтрация
       if (inputFilter) {
         if (user.name.toLowerCase().indexOf(inputFilter.toLowerCase()) === -1) {
@@ -21,7 +30,14 @@ export const Preview = ({ usersList, isFetching, inputFilter, sortType, sortDire
         }
       }
       return (
-        <div key={user.id} className={user.video ? "users-preview-item videoContent" : "users-preview-item"}>
+        <div
+          key={user.id}
+          className={
+            user.video
+              ? "users-preview-item videoContent"
+              : "users-preview-item"
+          }
+        >
           {/*Картинка через Icon компонент */}
           {/* <Icons name={user.image} width="50" height="50" /> */}
           <div className="previrew-item-no-video">
@@ -29,14 +45,19 @@ export const Preview = ({ usersList, isFetching, inputFilter, sortType, sortDire
               <img className="preview-item-icon" src={iconPath} alt=""></img>
               <p className="preview-item-name">{user.name}</p>
               <span className="preview-item-fav">
-                <i className={user.favourite ? "fas fa-star" : "far fa-star"} onClick={starHandler.bind(this, user.id)} />
+                <i
+                  className={user.favourite ? "fas fa-star" : "far fa-star"}
+                  onClick={starHandler.bind(this, user.id)}
+                />
               </span>
             </div>
 
             {/*Картинка через img */}
             <p className="preview-item-age">
               {user.age}
-              {isEnglish ? " years" : num2str(user.age, [" год", " года", " лет"])}
+              {isEnglish
+                ? " years"
+                : num2str(user.age, [" год", " года", " лет"])}
             </p>
             <p className="preview-item-phone">
               <i className="fas fa-phone" /> {user.phone}
@@ -45,7 +66,12 @@ export const Preview = ({ usersList, isFetching, inputFilter, sortType, sortDire
           </div>
           {user.video && (
             <div className="previrew-item-video">
-              <ReactPlayer url={videoPath} playing loop wrapper="previrew-item-video" />
+              <ReactPlayer
+                url={videoPath}
+                playing
+                loop
+                wrapper="previrew-item-video"
+              />
             </div>
           )}
         </div>

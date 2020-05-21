@@ -5,7 +5,15 @@ import PropTypes from "prop-types";
 // import { Icons } from "../UI/Icons/Icons";
 import "./Table.scss";
 
-export const Table = ({ usersList, isFetching, inputFilter, sortType, sortDirection, isEnglish, starHandler }) => {
+export const Table = ({
+  usersList,
+  isFetching,
+  inputFilter,
+  sortType,
+  sortDirection,
+  isEnglish,
+  starHandler,
+}) => {
   const renderTable = () => {
     // сортировка
     if (sortType) sortList(sortType, sortDirection, usersList);
@@ -29,11 +37,16 @@ export const Table = ({ usersList, isFetching, inputFilter, sortType, sortDirect
           <p className="table-item-name">{user.name}</p>
           <p className="table-item-age">
             {user.age}
-            {isEnglish ? " years" : num2str(user.age, [" год", " года", " лет"])}
+            {isEnglish
+              ? " years"
+              : num2str(user.age, [" год", " года", " лет"])}
           </p>
           <p className="table-item-phone">{user.phone}</p>
           <span className="table-item-fav">
-            <i className={user.favourite ? "fas fa-star" : "far fa-star"} onClick={starHandler.bind(this, user.id)} />
+            <i
+              className={user.favourite ? "fas fa-star" : "far fa-star"}
+              onClick={starHandler.bind(this, user.id)}
+            />
           </span>
         </div>
       );
@@ -41,7 +54,15 @@ export const Table = ({ usersList, isFetching, inputFilter, sortType, sortDirect
   };
 
   return (
-    <>{isFetching ? <Loader /> : usersList.length !== 0 ? <div className="users-table">{renderTable()}</div> : <h2>Список пользователей пуст!</h2>}</>
+    <>
+      {isFetching ? (
+        <Loader />
+      ) : usersList.length !== 0 ? (
+        <div className="users-table">{renderTable()}</div>
+      ) : (
+        <h2>Список пользователей пуст!</h2>
+      )}
+    </>
   );
 };
 
