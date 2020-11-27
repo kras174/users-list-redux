@@ -17,13 +17,13 @@ export const Preview = ({
   const renderPreview = () => {
     // сортировка
     if (sortType) sortList(sortType, sortDirection, usersList);
-    // вывод контекта
+    // вывод контента
     return usersList.map((user) => {
       const iconPath = require(`../../data/images/${user.image}.svg`);
       let videoPath = "";
       if (user.video)
         videoPath = require(`../../data/videos/${user.video}.mp4`);
-      //фильтрация
+      // фильтрация
       if (inputFilter) {
         if (user.name.toLowerCase().indexOf(inputFilter.toLowerCase()) === -1) {
           return null;
