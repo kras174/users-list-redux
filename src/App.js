@@ -1,10 +1,10 @@
 import React from "react";
-import HeaderContainer from "./containers/HeaderContainer";
-import TableContainer from "./containers/TableContainer";
-import PreviewContainer from "./containers/PreviewContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 import { Switch, Route, Redirect } from "react-router-dom";
+import TableContainer from "./components/Content/Table/TableContainer";
+import PreviewContainer from "./components/Content/Preview/PreviewContainer";
 
-function App() {
+const App = () => {
   return (
     <div className="App container">
       <HeaderContainer />

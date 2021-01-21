@@ -1,5 +1,5 @@
 // Вычисление склонения слова
-function num2str(n, text) {
+export const num2str = (n, text) => {
 	n = Math.abs(n) % 100;
 	let n1 = n % 10;
 	if (n > 10 && n < 20) {
@@ -14,10 +14,8 @@ function num2str(n, text) {
 	return text[2];
 };
 
-module.exports = num2str;
-
 // Сортировка элементов
-function sortList(type, direction, array) {
+export const sortList = (type, direction, array) => {
 	switch (type) {
 		case 'Name':
 			return array.sort((a, b) => {

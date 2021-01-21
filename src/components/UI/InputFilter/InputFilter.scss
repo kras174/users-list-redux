@@ -1,0 +1,27 @@
+@import '../../../variables.scss';
+
+.filter {
+	margin-top: 10px;
+}
+.filter-input {
+    width: 130px;
+    box-sizing: border-box;
+    border: 1px solid $brandColorDark;
+    font-size: 16px;
+    padding: 8px 10px 8px 10px;
+    &:focus {
+        outline: none;
+    }
+}
+.filter-clear {
+    cursor: pointer;
+    color: $brandColorDark;
+    margin-left: -20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease-in;
+}
+.filter-clear-active {
+    opacity: 1;
+    visibility: visible;
+}

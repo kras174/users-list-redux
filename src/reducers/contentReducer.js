@@ -2,8 +2,9 @@ import {
 	FETCH_USERS_REQUEST,
 	FETCH_USERS_SUCCESS,
 	FETCH_USERS_ERROR,
-	FAVOURITE_HANDLER,
-	CHANGE_LANGUAGE
+	FAVORITE_HANDLER,
+	CHANGE_LANGUAGE,
+	ADD_USER
 } from '../actions/contentActions';
 import { SORT_BUTTON_CLICK, DIRECTION_BUTTON_CLICK } from '../actions/sortActions';
 
@@ -36,7 +37,7 @@ export function contentReducer(state = initialState, action) {
 				isFetching: false,
 				error: action.payload.error
 			};
-		case FAVOURITE_HANDLER:
+		case FAVORITE_HANDLER:
 			return { ...state, usersList: action.payload };
 		case SORT_BUTTON_CLICK:
 			return { ...state, sortType: action.payload };
@@ -44,6 +45,8 @@ export function contentReducer(state = initialState, action) {
 			return { ...state, sortDirection: action.payload };
 		case CHANGE_LANGUAGE:
 			return { ...state, isEnglish: !state.isEnglish };
+		case ADD_USER:
+			return { ...state, usersList: action.payload };
 		default:
 			return state;
 	}
