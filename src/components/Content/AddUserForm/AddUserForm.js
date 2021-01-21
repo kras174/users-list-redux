@@ -31,14 +31,14 @@ const AddUserForm = ({ addUser, isEnglish }) => {
             <input
                 type='tel'
                 id='InputPhone'
-                className='col form-control'
+                className='col form-control filter-input'
                 placeholder={isEnglish ? 'Phone' : 'Телефон'}
                 aria-describedby='addPhone'
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 required
             />
-            <button type='submit' className='btn btn-primary'>
+            <button type='submit' className='btn btn--dark'>
                 Add user
             </button>
 		</form>

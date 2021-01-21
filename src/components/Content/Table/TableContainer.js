@@ -1,10 +1,9 @@
 import { connect } from 'react-redux';
-import { fetchUsers, starHandler } from '../../../actions/contentActions';
+import { deleteUser, fetchUsers } from '../../../actions/contentActions';
 import { Table } from './Table';
 
 const mapStateToProps = (store) => ({
 	inputFilter: store.filter.inputFilter,
-	isEnglish: store.content.isEnglish,
 	isFetching: store.content.isFetching,
 	sortDirection: store.content.sortDirection,
 	sortType: store.content.sortType,
@@ -12,8 +11,8 @@ const mapStateToProps = (store) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+    deleteUser: (id) => dispatch(deleteUser(id)),
     fetchUsers: () => dispatch(fetchUsers()),
-    starHandler: (id) => dispatch(starHandler(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);

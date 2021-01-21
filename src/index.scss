@@ -13,3 +13,37 @@ body {
 	max-width: 800px;
 	margin: 0 auto;
 }
+
+.btn {
+    padding: 5px 10px;
+    margin-right: 10px;
+    border: 1px solid $brandColorDark;
+    cursor: pointer;
+
+    &:focus,
+    &:active {
+        outline: none;
+    }
+
+    &--light {
+        color: $brandColorDark;
+        background-color: $brandColorLight;
+        transition: all 0.2s linear;
+
+        &:hover {
+            color: $brandColorLight;
+            background-color: $brandColorDark;
+        }
+    }
+
+    &--dark {
+        color: $brandColorLight;
+        background-color: $brandColorDark;
+        transition: all 0.2s linear;
+
+        &:hover {
+            color: $brandColorDark;
+            background-color: $brandColorLight;
+        }
+    }
+}

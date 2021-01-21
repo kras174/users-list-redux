@@ -4,7 +4,9 @@ import {
 	FETCH_USERS_ERROR,
 	FAVORITE_HANDLER,
 	CHANGE_LANGUAGE,
-	ADD_USER
+    ADD_USER,
+    DELETE_USER,
+    SAVE_USER,
 } from '../actions/contentActions';
 import { SORT_BUTTON_CLICK, DIRECTION_BUTTON_CLICK } from '../actions/sortActions';
 
@@ -46,8 +48,15 @@ export function contentReducer(state = initialState, action) {
 		case CHANGE_LANGUAGE:
 			return { ...state, isEnglish: !state.isEnglish };
 		case ADD_USER:
-			return { ...state, usersList: action.payload };
-		default:
-			return state;
+            return { ...state, usersList: action.payload };
+        case DELETE_USER:
+            return { ...state, usersList: action.payload };
+        case SAVE_USER:
+            const usersList = state.usersList;
+            usersList[action.payload.id] = action.payload;
+
+            return { ...state, usersList: [...state.usersList] };
+        default:
+        return state;
 	}
 }

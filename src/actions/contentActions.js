@@ -4,13 +4,17 @@ export const FETCH_USERS_ERROR = 'FETCH_USERS_ERROR';
 export const FETCH_USERS_REQUEST = 'FETCH_USERS_REQUEST';
 export const FETCH_USERS_SUCCESS = 'FETCH_USERS_SUCCESS';
 export const ADD_USER = 'ADD_USER';
+export const DELETE_USER = 'DELETE_USER';
+export const SAVE_USER = 'SAVE_USER';
 
 export const fetchUsers = () => {
-	return (dispatch) => {
+	return (dispatch, getState) => {
+        if (getState().content.usersList.length > 0) return;
+
 		dispatch({ type: FETCH_USERS_REQUEST });
 
 		try {
-			const userList = [];
+            const userList = [];
 			const data = require('../data/data.json');
 			for (let i = 0; i < data.length; i++) {
 				userList.push(data[i]);
@@ -53,16 +57,45 @@ export const changeLanguage = () => {
 };
 
 export const addUser = (user) => {
+	return (dispatch, getState) => {
+        const usersList = getState().content.usersList;
+        const data = require('../data/data.json');
+		const newUser = {
+			...user,
+            id: data.length,
+            age: 30,
+			image: 'sheep'
+		};
+		const newData = [...usersList, newUser];
+
+		dispatch({
+			type: ADD_USER,
+			payload: newData
+		});
+	};
+};
+
+export const deleteUser = (id) => {
+	return (dispatch, getState) => {
+		const newData = getState().content.usersList.filter((item) => item.id !== id);
+
+		dispatch({
+			type: DELETE_USER,
+			payload: newData
+		});
+	};
+};
+
+export const saveUser = (id, name, phone) => {
     return (dispatch, getState) => {
         const usersList = getState().content.usersList;
-        usersList.push({
-            ...user, 
-            id: usersList.length,
-            image: "sheep",
-        });
-		dispatch({
-            type: ADD_USER,
-            payload: usersList
+        const user = usersList[id];
+
+        const newUserData = {...user, name, phone};
+
+        dispatch({
+			type: SAVE_USER,
+			payload: newUserData
 		});
     }
-};
+}
