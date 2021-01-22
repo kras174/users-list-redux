@@ -15,6 +15,7 @@ export const fetchUsers = () => {
 
 		try {
             const userList = [];
+            // AJAX request here...
 			const data = require('../data/data.json');
 			for (let i = 0; i < data.length; i++) {
 				userList.push(data[i]);

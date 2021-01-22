@@ -11,3 +11,14 @@
         box-sizing: border-box;
     }
   }
+
+  .formWrapper {
+      position: relative;
+      padding-bottom: 30px;
+  }
+
+  .formErrors {
+    position: absolute;
+    bottom: 10px;
+    color: red;
+  }
